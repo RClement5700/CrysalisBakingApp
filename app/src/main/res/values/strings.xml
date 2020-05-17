@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">CrysalisBakingApp</string>
+    <string name="recipe_name">Name</string>
+    <string name="recipe_ingredients">Ingredients</string>
+    <string name="step_description">Step Description</string>
+
+    <string name="instructions">Instructions</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
