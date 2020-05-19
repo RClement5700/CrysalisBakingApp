@@ -41,14 +41,12 @@ public class StepRecyclerViewAdapter
     }
 
     @Override
-    public void onBindViewHolder(@NonNull StepRecyclerViewHolder holder, int position) {
-        position = holder.getAdapterPosition();
+    public void onBindViewHolder(@NonNull StepRecyclerViewHolder holder, final int position) {
         holder.tv_step_description.setText(steps.get(position).shortDescription);
-        bundle.putString("videoUrl", steps.get(position).videoUrl);
-        bundle.putString("thumbnalUrl", steps.get(position).thumbnailUrl);
-        bundle.putString("description", steps.get(position).description);
-        bundle.putInt("stepIndex", position);
-        bundle.putSerializable("listOfSteps", steps);
+        holder.setPosition(position);
+//        bundle.putString("videoUrl", steps.get(position).videoUrl);
+//        bundle.putString("thumbnalUrl", steps.get(position).thumbnailUrl);
+//        bundle.putString("description", steps.get(position).description);
     }
 
     @Override
@@ -58,6 +56,7 @@ public class StepRecyclerViewAdapter
 
     class StepRecyclerViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.tv_step_description) TextView tv_step_description;
+        int position;
 
         public StepRecyclerViewHolder(@NonNull final View itemView) {
             super(itemView);
@@ -66,12 +65,16 @@ public class StepRecyclerViewAdapter
                 @Override
                 public void onClick(View view) {
                 StepFragment stepFragment = new StepFragment();
-                stepFragment.setArguments(bundle);
+                    bundle.putInt("position", position);
+                    stepFragment.setArguments(bundle);
                     fragmentManager.beginTransaction()
                     .add(R.id.step_container, stepFragment)
                     .commit();
                 }
             });
+        }
+        void setPosition(int position) {
+            this.position = position;
         }
     }
 }

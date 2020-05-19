@@ -50,8 +50,8 @@ public class StepFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_step, container, false);
         ButterKnife.bind(this, v);
-        int stepIndex;
-        ArrayList<Step> listOfSteps = null;
+        ArrayList<Step> steps = new ArrayList<>();
+        int position = 0;
         String description = null;
         String thumbnailUrl;
         String videoUrl;
@@ -62,11 +62,13 @@ public class StepFragment extends Fragment {
                     .commit();
         }
         if (getArguments() != null) {
-            listOfSteps = (ArrayList<Step>) getArguments().getSerializable("listOfSteps");
-            stepIndex = getArguments().getInt("stepIndex");
-            description = listOfSteps.get(stepIndex).description;
-            thumbnailUrl = getArguments().getString("thumbnailUrl");
-            videoUrl = getArguments().getString("videoUrl");
+            steps = (ArrayList<Step>) getArguments().getSerializable("steps");
+            position = getArguments().getInt("position");
+            System.err.println("position: " + position);
+            description = steps.get(position).description;
+//            description = getArguments().getString("description");
+//            thumbnailUrl = getArguments().getString("thumbnailUrl");
+//            videoUrl = getArguments().getString("videoUrl");
         }
 
         tv_step_instruction.setText(description);

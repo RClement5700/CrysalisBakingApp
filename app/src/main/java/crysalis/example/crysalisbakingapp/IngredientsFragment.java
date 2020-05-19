@@ -35,6 +35,7 @@ public class IngredientsFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_ingredients, container, false);
         ButterKnife.bind(this, v);
         ArrayList<Step> steps = new ArrayList<>();
+        Bundle bundle = getArguments();
         if (getArguments() != null) {
             String ingredients = getArguments().getString("ingredients");
             tv_ingredients_view.setText(ingredients);
@@ -43,7 +44,7 @@ public class IngredientsFragment extends Fragment {
         LinearLayoutManager llm = new LinearLayoutManager(this.getActivity());
         rv_steps = v.findViewById(R.id.rv_steps);
         rv_steps.setLayoutManager(llm);
-        rv_steps.setAdapter(new StepRecyclerViewAdapter(steps, new Bundle(),
+        rv_steps.setAdapter(new StepRecyclerViewAdapter(steps, bundle,
                 getFragmentManager()));
         img_btn_close_ingredients.setOnClickListener(new View.OnClickListener() {
             @Override
