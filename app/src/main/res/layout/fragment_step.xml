@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
@@ -9,8 +9,13 @@
     tools:context=".StepFragment">
 
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/close_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
 
         <ImageButton
             android:id="@+id/img_btn_close_step"
@@ -27,6 +32,9 @@
         android:id="@+id/vid_view_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/close_toolbar"
         />
 
     <FrameLayout
@@ -34,6 +42,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#F5F2D0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/vid_view_container"
         >
 
         <TextView
@@ -51,7 +62,10 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_margin="8dp"
-        >
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/frame_step_instruction"
+        app:layout_constraintBottom_toBottomOf="parent">
         <Button
             android:id="@+id/previous_btn"
             android:layout_width="wrap_content"
@@ -67,4 +81,4 @@
             android:text="@string/next"
             />
     </LinearLayout>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

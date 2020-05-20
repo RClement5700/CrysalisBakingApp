@@ -44,9 +44,7 @@ public class StepRecyclerViewAdapter
     public void onBindViewHolder(@NonNull StepRecyclerViewHolder holder, final int position) {
         holder.tv_step_description.setText(steps.get(position).shortDescription);
         holder.setPosition(position);
-//        bundle.putString("videoUrl", steps.get(position).videoUrl);
-//        bundle.putString("thumbnalUrl", steps.get(position).thumbnailUrl);
-//        bundle.putString("description", steps.get(position).description);
+        bundle.putSerializable("steps", steps);
     }
 
     @Override
@@ -64,7 +62,7 @@ public class StepRecyclerViewAdapter
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                StepFragment stepFragment = new StepFragment();
+                    StepFragment stepFragment = new StepFragment();
                     bundle.putInt("position", position);
                     stepFragment.setArguments(bundle);
                     fragmentManager.beginTransaction()

@@ -26,35 +26,28 @@ public class StepFragment extends Fragment {
     @BindView(R.id.tv_step_instruction) TextView tv_step_instruction;
     @BindView(R.id.previous_btn) Button previous_btn;
     @BindView(R.id.next_btn) Button next_btn;
-    private StepFragment nextFragment;
-    private StepFragment previousFragment;
-    private int position;
+
 
     public StepFragment() {
         //required empty constructor
     }
 
-    public StepFragment(StepFragment nextFragment, StepFragment previousFragment) {
-        this.nextFragment = nextFragment;
-        this.previousFragment = previousFragment;
-    }
-
-    public StepFragment(int position) {
-        this.position = position;
-    }
-
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_step, container, false);
         ButterKnife.bind(this, v);
-        ArrayList<Step> steps = new ArrayList<>();
-        int position = 0;
+        ArrayList<Step> steps;
+        int position;
         String description = null;
         String thumbnailUrl;
         String videoUrl;
+        StepFragment nextFragment;
+        StepFragment previousFragment;
+        final int nextPosition;
+        final int previousPosition;
+
         if (getFragmentManager() != null) {
             getFragmentManager()
                     .beginTransaction()
@@ -66,12 +59,54 @@ public class StepFragment extends Fragment {
             position = getArguments().getInt("position");
             System.err.println("position: " + position);
             description = steps.get(position).description;
-//            description = getArguments().getString("description");
-//            thumbnailUrl = getArguments().getString("thumbnailUrl");
-//            videoUrl = getArguments().getString("videoUrl");
-        }
+//            thumbnailUrl = steps.get(position).thumbnailUrl;
+//            videoUrl = steps.get(position).videoUrl;
 
-        tv_step_instruction.setText(description);
+            if (position == 0) {
+                previousPosition = steps.size() - 1;
+                nextPosition = 1;
+            }
+            else if (position == steps.size() - 1) {
+                previousPosition = steps.size() - 2;
+                nextPosition = 0;
+            }
+
+            else {
+                previousPosition = position - 1;
+                nextPosition = position + 1;
+            }
+            tv_step_instruction.setText(description);
+            next_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Bundle bundle = getArguments();
+                    bundle.remove("position");
+                    bundle.putInt("position", nextPosition);
+                    System.err.println("nextPosition: " + nextPosition);
+                    StepFragment stepFragment = new StepFragment();
+                    stepFragment.setArguments(bundle);
+                    getFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.step_container, stepFragment)
+                            .commit();
+                }
+            });
+            previous_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Bundle bundle = getArguments();
+                    bundle.remove("position");
+                    bundle.putInt("position", previousPosition);
+                    System.err.println("previousPosition: " + previousPosition);
+                    StepFragment stepFragment = new StepFragment();
+                    stepFragment.setArguments(bundle);
+                    getFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.step_container, stepFragment)
+                            .commit();
+                }
+            });
+        }
         img_btn_close_step.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
