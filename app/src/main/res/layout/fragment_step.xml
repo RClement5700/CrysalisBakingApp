@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="#F5F2D0"
     tools:context=".StepFragment">
 
     <androidx.appcompat.widget.Toolbar
@@ -21,7 +21,7 @@
             android:id="@+id/img_btn_close_step"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#80FFFFFF"
+            android:background="#80F5F2D0"
             android:layout_gravity="end"
             android:layout_margin="8dp"
             android:src="@android:drawable/ic_menu_close_clear_cancel"/>
