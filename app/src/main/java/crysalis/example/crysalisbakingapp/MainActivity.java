@@ -1,8 +1,11 @@
 package crysalis.example.crysalisbakingapp;
 
+import android.content.res.Configuration;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -97,8 +100,16 @@ public class MainActivity extends AppCompatActivity {
                         }
                         RecipeRecyclerViewAdapter adapter = new RecipeRecyclerViewAdapter(
                                 recipes, new Bundle(), getSupportFragmentManager());
-                        LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
-                        rv_recipes.setLayoutManager(llm);
+//                        LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
+//                        rv_recipes.setLayoutManager(llm);
+                        Configuration newConfig = getResources().getConfiguration();
+
+                        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                            rv_recipes.setLayoutManager(new GridLayoutManager(getApplicationContext(), 3));
+                        }
+                        if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+                            rv_recipes.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                        }
                         rv_recipes.setAdapter(adapter);
                     }
                     catch(JSONException e) {

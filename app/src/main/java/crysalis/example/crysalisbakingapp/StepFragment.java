@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ import butterknife.ButterKnife;
 
 public class StepFragment extends Fragment {
     @BindView(R.id.img_btn_close_step) ImageButton img_btn_close_step;
+    @Nullable
     @BindView(R.id.tv_step_instruction) TextView tv_step_instruction;
     @BindView(R.id.previous_btn) Button previous_btn;
     @BindView(R.id.next_btn) Button next_btn;
@@ -93,7 +95,9 @@ public class StepFragment extends Fragment {
                 previousVideoUrl = steps.get(previousPosition).videoUrl;
                 previousThumbnailUrl = steps.get(previousPosition).thumbnailUrl;
             }
-            tv_step_instruction.setText(description);
+            if (tv_step_instruction != null) {
+                tv_step_instruction.setText(description);
+            }
             next_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
