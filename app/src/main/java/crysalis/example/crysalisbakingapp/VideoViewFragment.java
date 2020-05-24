@@ -54,7 +54,6 @@ public class VideoViewFragment extends Fragment {
                     DataSource.Factory dataSourceFactory =
                             new DefaultDataSourceFactory(getActivity(), userAgent);
                     Uri uriOfContentUrl = Uri.parse(videoPath);
-                    System.err.println("videoPath: " + videoPath);
                     MediaSource mediaSource = new ProgressiveMediaSource
                             .Factory(dataSourceFactory)
                             .createMediaSource(uriOfContentUrl);
