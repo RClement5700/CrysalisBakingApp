@@ -71,8 +71,7 @@ public class StepRecyclerViewAdapter
                         stepFragment.setArguments(bundle);
                         fragmentManager
                                 .beginTransaction()
-                                //replace
-                                .add(R.id.step_container_tablet, stepFragment)
+                                .replace(R.id.step_container_tablet, stepFragment)
                                 .commit();
                     }
                     else {
