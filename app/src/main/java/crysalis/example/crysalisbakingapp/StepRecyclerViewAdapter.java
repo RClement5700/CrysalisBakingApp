@@ -1,5 +1,7 @@
 package crysalis.example.crysalisbakingapp;
 
+import android.content.Context;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -62,17 +64,38 @@ public class StepRecyclerViewAdapter
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    StepFragment stepFragment = new StepFragment();
-                    bundle.putInt("position", position);
-                    stepFragment.setArguments(bundle);
-                    fragmentManager.beginTransaction()
-                    .add(R.id.step_container, stepFragment)
-                    .commit();
+
+                    if (isTablet(itemView.getContext())) {
+                        StepFragment stepFragment = new StepFragment();
+                        bundle.putInt("position", position);
+                        stepFragment.setArguments(bundle);
+                        fragmentManager
+                                .beginTransaction()
+                                //replace
+                                .add(R.id.step_container_tablet, stepFragment)
+                                .commit();
+                    }
+                    else {
+                        StepFragment stepFragment = new StepFragment();
+                        bundle.putInt("position", position);
+                        stepFragment.setArguments(bundle);
+                        fragmentManager.beginTransaction()
+                                .add(R.id.step_container, stepFragment)
+                                .commit();
+                    }
                 }
             });
         }
         void setPosition(int position) {
             this.position = position;
+        }
+
+        private boolean isTablet(Context context) {
+            boolean xlarge = ((context.getResources().getConfiguration().screenLayout &
+                    Configuration.SCREENLAYOUT_SIZE_MASK) == 4);
+            boolean large = ((context.getResources().getConfiguration().screenLayout &
+                    Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_LARGE);
+            return (xlarge || large);
         }
     }
 }

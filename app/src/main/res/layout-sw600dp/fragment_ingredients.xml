@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".IngredientsFragment">
+
+    <LinearLayout
+        android:id="@+id/container_steps_list"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="8dp"
+        app:layout_constraintEnd_toStartOf="@id/border"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:id="@+id/ingredients_frame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#F5F2D0"
+            android:orientation="horizontal"
+            android:layout_margin="8dp"
+            >
+
+            <TextView
+                android:id="@+id/tv_ingredients_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/recipe_ingredients"
+                android:textColor="#000000"
+                android:layout_weight="1"
+                android:layout_margin="16dp"
+                android:textSize="16sp" />
+
+            <ImageButton
+                android:id="@+id/img_btn_close_ingredients"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_margin="8dp"
+                android:background="#80F5F2D0"
+                android:src="@android:drawable/ic_menu_close_clear_cancel" />
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_steps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/border"
+        android:layout_width="2dp"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        android:orientation="vertical"
+        android:layout_margin="4dp"
+        app:layout_constraintStart_toEndOf="@id/container_steps_list"
+        app:layout_constraintEnd_toStartOf="@id/step_container_tablet"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <FrameLayout
+        android:id="@+id/step_container_tablet"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        app:layout_constraintWidth_percent="50"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/border"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

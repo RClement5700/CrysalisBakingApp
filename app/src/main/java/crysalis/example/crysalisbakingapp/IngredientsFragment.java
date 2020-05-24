@@ -1,6 +1,9 @@
 package crysalis.example.crysalisbakingapp;
 
 
+import android.content.Context;
+import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +16,15 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.exoplayer2.ExoPlayerFactory;
+import com.google.android.exoplayer2.SimpleExoPlayer;
+import com.google.android.exoplayer2.source.MediaSource;
+import com.google.android.exoplayer2.source.ProgressiveMediaSource;
+import com.google.android.exoplayer2.ui.PlayerView;
+import com.google.android.exoplayer2.upstream.DataSource;
+import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
+import com.google.android.exoplayer2.util.Util;
+
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -24,7 +36,6 @@ public class IngredientsFragment extends Fragment {
     @BindView(R.id.tv_ingredients_view) TextView tv_ingredients_view;
     @BindView(R.id.rv_steps) RecyclerView rv_steps;
     @BindView(R.id.img_btn_close_ingredients) ImageButton img_btn_close_ingredients;
-
     public IngredientsFragment() {
         //empty constructor
     }
@@ -41,7 +52,7 @@ public class IngredientsFragment extends Fragment {
             tv_ingredients_view.setText(ingredients);
             steps = (ArrayList<Step>) getArguments().getSerializable("steps");
         }
-        LinearLayoutManager llm = new LinearLayoutManager(this.getActivity());
+        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         rv_steps = v.findViewById(R.id.rv_steps);
         rv_steps.setLayoutManager(llm);
         rv_steps.setAdapter(new StepRecyclerViewAdapter(steps, bundle,

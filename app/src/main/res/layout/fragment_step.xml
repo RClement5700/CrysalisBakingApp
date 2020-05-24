@@ -72,6 +72,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/previous"
+            android:onClick="roryclick"
+
             />
         <Button
             android:id="@+id/next_btn"

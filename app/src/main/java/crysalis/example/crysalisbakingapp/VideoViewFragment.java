@@ -51,8 +51,6 @@ public class VideoViewFragment extends Fragment {
                     SimpleExoPlayer player = ExoPlayerFactory.newSimpleInstance(getActivity());
                     String userAgent = Util.getUserAgent(getActivity(),
                             getActivity().getResources().getString(R.string.app_name));
-//                DefaultDataSourceFactory defdataSourceFactory =
-//                        new DefaultDataSourceFactory(getActivity(), userAgent);
                     DataSource.Factory dataSourceFactory =
                             new DefaultDataSourceFactory(getActivity(), userAgent);
                     Uri uriOfContentUrl = Uri.parse(videoPath);

@@ -100,8 +100,6 @@ public class MainActivity extends AppCompatActivity {
                         }
                         RecipeRecyclerViewAdapter adapter = new RecipeRecyclerViewAdapter(
                                 recipes, new Bundle(), getSupportFragmentManager());
-//                        LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
-//                        rv_recipes.setLayoutManager(llm);
                         Configuration newConfig = getResources().getConfiguration();
 
                         if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {

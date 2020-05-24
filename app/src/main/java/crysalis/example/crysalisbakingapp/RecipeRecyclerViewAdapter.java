@@ -71,11 +71,15 @@ public class RecipeRecyclerViewAdapter
                 public void onClick(View view) {
                     bundle.putSerializable("steps", steps);
                     bundle.putString("ingredients", tv_recipe_ingredients.getText().toString());
+                    bundle.putInt("position", 0);
                     IngredientsFragment ingredientsFragment =
                             new IngredientsFragment();
+                    StepFragment stepFragment = new StepFragment();
                     ingredientsFragment.setArguments(bundle);
+                    stepFragment.setArguments(bundle);
                     fragmentManager.beginTransaction()
                             .add(R.id.ingredients_container, ingredientsFragment)
+                            .add(R.id.step_container_tablet, stepFragment)
                             .commit();
                 }
             });
