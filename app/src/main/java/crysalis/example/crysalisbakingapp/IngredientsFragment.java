@@ -1,6 +1,7 @@
 package crysalis.example.crysalisbakingapp;
 
 
+import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.net.Uri;
@@ -36,6 +37,7 @@ public class IngredientsFragment extends Fragment {
     @BindView(R.id.tv_ingredients_view) TextView tv_ingredients_view;
     @BindView(R.id.rv_steps) RecyclerView rv_steps;
     @BindView(R.id.img_btn_close_ingredients) ImageButton img_btn_close_ingredients;
+    private String ingredients;
     public IngredientsFragment() {
         //empty constructor
     }
@@ -48,7 +50,7 @@ public class IngredientsFragment extends Fragment {
         ArrayList<Step> steps = new ArrayList<>();
         Bundle bundle = getArguments();
         if (getArguments() != null) {
-            String ingredients = getArguments().getString("ingredients");
+            ingredients = getArguments().getString("ingredients");
             tv_ingredients_view.setText(ingredients);
             steps = (ArrayList<Step>) getArguments().getSerializable("steps");
         }
@@ -69,5 +71,9 @@ public class IngredientsFragment extends Fragment {
             }
         });
         return v;
+    }
+
+    public String getIngredients() {
+        return ingredients;
     }
 }

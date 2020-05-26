@@ -91,7 +91,7 @@ public class RecipeRecyclerViewAdapter
             });
         }
 
-        public void setSteps(ArrayList<Step> steps) {
+        private void setSteps(ArrayList<Step> steps) {
             this.steps = steps;
         }
 

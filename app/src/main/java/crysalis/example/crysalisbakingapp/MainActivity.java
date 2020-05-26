@@ -1,5 +1,7 @@
 package crysalis.example.crysalisbakingapp;
 
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.res.Configuration;
 import android.hardware.SensorManager;
 import android.os.Bundle;
