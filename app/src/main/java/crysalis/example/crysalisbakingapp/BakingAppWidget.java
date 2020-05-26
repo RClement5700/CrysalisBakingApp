@@ -12,8 +12,13 @@ public class BakingAppWidget extends AppWidgetProvider {
 
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                                 int appWidgetId) {
-
-        CharSequence widgetText = context.getString(R.string.appwidget_text);
+        CharSequence widgetText;
+        if (IngredientsFragment.getIngredients().isEmpty()) {
+            widgetText = context.getString(R.string.appwidget_text);
+        }
+        else {
+            widgetText = IngredientsFragment.getIngredients();
+        }
         // Construct the RemoteViews object
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.baking_app_widget);
         views.setTextViewText(R.id.appwidget_text, widgetText);
