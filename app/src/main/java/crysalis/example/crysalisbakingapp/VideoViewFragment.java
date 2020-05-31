@@ -2,6 +2,7 @@ package crysalis.example.crysalisbakingapp;
 
 
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -72,4 +73,19 @@ public class VideoViewFragment extends Fragment {
         return v;
     }
 
+    @Override
+    public void onPause() {
+         super.onPause();
+         if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.M && videoView.getPlayer() != null) {
+             videoView.getPlayer().release();
+         }
+    }
+
+    @Override
+    public void onStop() {
+         super.onStop();
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.M && videoView.getPlayer() != null) {
+             videoView.getPlayer().release();
+         }
+    }
 }

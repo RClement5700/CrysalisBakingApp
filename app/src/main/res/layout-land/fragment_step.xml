@@ -24,7 +24,9 @@
             android:background="#80F5F2D0"
             android:layout_gravity="end"
             android:layout_margin="8dp"
-            android:src="@android:drawable/ic_menu_close_clear_cancel"/>
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:onClick="closeStep"
+            />
 
     </androidx.appcompat.widget.Toolbar>
 

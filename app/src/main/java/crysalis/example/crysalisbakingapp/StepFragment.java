@@ -116,13 +116,19 @@ public class StepFragment extends Fragment {
         img_btn_close_step.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getFragmentManager()
-                        .beginTransaction()
-                        .remove(StepFragment.this)
-                        .commit();
+                closeStep(view);
             }
         });
         return v;
+    }
+
+    private void closeStep(View v) {
+        if (getFragmentManager() != null) {
+            getFragmentManager()
+                    .beginTransaction()
+                    .remove(StepFragment.this)
+                    .commit();
+        }
     }
 
     private void directionButtonPressed(String videoUrl, String thumbnailUrl, int position) {

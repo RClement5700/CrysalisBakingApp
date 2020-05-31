@@ -67,12 +67,7 @@ public class IngredientsFragment extends Fragment {
         img_btn_close_ingredients.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (getFragmentManager() != null) {
-                    getFragmentManager()
-                            .beginTransaction()
-                            .remove(IngredientsFragment.this)
-                            .commit();
-                }
+                closeIngredients(view);
             }
         });
         return v;
@@ -80,5 +75,15 @@ public class IngredientsFragment extends Fragment {
 
     public static String getIngredients() {
         return ingredients;
+    }
+
+    private void closeIngredients(View v) {
+
+        if (getFragmentManager() != null) {
+            getFragmentManager()
+                    .beginTransaction()
+                    .remove(IngredientsFragment.this)
+                    .commit();
+        }
     }
 }

@@ -41,7 +41,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:background="#80F5F2D0"
-                android:src="@android:drawable/ic_menu_close_clear_cancel" />
+                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                android:onClick="closeIngredients"
+                />
 
         </FrameLayout>
 
